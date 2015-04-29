@@ -1,0 +1,31 @@
+I, [2015-04-29T13:49:54.982422 #46012]  INFO -- Kitchen: -----> Starting Kitchen (v1.4.0)
+E, [2015-04-29T13:49:54.982675 #46012] ERROR -- Kitchen: ------Exception-------
+E, [2015-04-29T13:49:54.982700 #46012] ERROR -- Kitchen: Class: Kitchen::UserError
+E, [2015-04-29T13:49:54.982716 #46012] ERROR -- Kitchen: Message: Kitchen YAML file /Users/jan/Documents/code/AIDA/AIDA.aws.dockerhost/cookbooks/application/.kitchen.yml does not exist.
+E, [2015-04-29T13:49:54.982731 #46012] ERROR -- Kitchen: ------Backtrace-------
+E, [2015-04-29T13:49:54.982747 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/loader/yaml.rb:74:in `read'
+E, [2015-04-29T13:49:54.982758 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/config.rb:145:in `data'
+E, [2015-04-29T13:49:54.982768 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/config.rb:124:in `suites'
+E, [2015-04-29T13:49:54.982778 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/config.rb:175:in `filter_instances'
+E, [2015-04-29T13:49:54.982788 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/config.rb:134:in `build_instances'
+E, [2015-04-29T13:49:54.982797 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/config.rb:110:in `instances'
+E, [2015-04-29T13:49:54.982813 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/command.rb:115:in `filtered_instances'
+E, [2015-04-29T13:49:54.982825 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/command.rb:145:in `parse_subcommand'
+E, [2015-04-29T13:49:54.982845 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/command/action.rb:38:in `block in call'
+E, [2015-04-29T13:49:54.982854 #46012] ERROR -- Kitchen: /Users/jan/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:281:in `measure'
+E, [2015-04-29T13:49:54.982864 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/command/action.rb:37:in `call'
+E, [2015-04-29T13:49:54.982873 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/cli.rb:56:in `perform'
+E, [2015-04-29T13:49:54.982885 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/cli.rb:171:in `block (2 levels) in <class:CLI>'
+E, [2015-04-29T13:49:54.982895 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/thor-0.19.1/lib/thor/command.rb:27:in `run'
+E, [2015-04-29T13:49:54.982909 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/thor-0.19.1/lib/thor/invocation.rb:126:in `invoke_command'
+E, [2015-04-29T13:49:54.982923 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/cli.rb:308:in `invoke_task'
+E, [2015-04-29T13:49:54.982937 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/thor-0.19.1/lib/thor.rb:359:in `dispatch'
+E, [2015-04-29T13:49:54.982947 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/thor-0.19.1/lib/thor/base.rb:440:in `start'
+E, [2015-04-29T13:49:54.982959 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/bin/kitchen:13:in `block in <top (required)>'
+E, [2015-04-29T13:49:54.982973 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/lib/kitchen/errors.rb:154:in `with_friendly_errors'
+E, [2015-04-29T13:49:54.982987 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/gems/test-kitchen-1.4.0/bin/kitchen:13:in `<top (required)>'
+E, [2015-04-29T13:49:54.983003 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/bin/kitchen:23:in `load'
+E, [2015-04-29T13:49:54.983012 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/bin/kitchen:23:in `<main>'
+E, [2015-04-29T13:49:54.983022 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/bin/ruby_noexec_wrapper:14:in `eval'
+E, [2015-04-29T13:49:54.983039 #46012] ERROR -- Kitchen: /Users/jan/.rvm/gems/ruby-2.0.0-p247/bin/ruby_noexec_wrapper:14:in `<main>'
+E, [2015-04-29T13:49:54.983056 #46012] ERROR -- Kitchen: ----------------------
