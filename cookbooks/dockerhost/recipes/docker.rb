@@ -1,7 +1,21 @@
-#include_recipe "docker"
-yum_package 'docker'
 
-service "docker" do
+case node['platform']
+  when 'amazon', 'centos', 'fedora', 'redhat'
+    package node['docker']['package']['name']
+
+  when 'debian', 'ubuntu'
+    package ['wget', 'inotify-tools']
+    execute 'get docker.io' do
+      command "wget -qO- https://get.docker.com/ | sh"
+      not_if { ::File.exists?("/usr/bin/docker")}
+    end
+
+else
+  fail "The package installation method for `#{node['platform']} is not supported.`"
+
+end
+
+service node['docker']['package']['name'] do
   action :start
 end
 

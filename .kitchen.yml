@@ -19,6 +19,19 @@ platforms:
         natdnshostresolver1: "on"
         natdnsproxy1: "on"
 
+  - name: ubuntu-14.04
+    driver:
+      box: "opscode-ubuntu-14.04"
+      #box_url: "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.1_chef-provisionerless.box"
+      network:
+        #- ["private_network", {type: "dhcp"}]
+        #- ["public_network",  bridge: 'en1: Thunderbolt 1']
+      - ["private_network", {ip: "192.168.33.10"}]
+      customize:
+        memory: 2024
+        natdnshostresolver1: "on"
+        natdnsproxy1: "on"
+
 
 suites:
   - name: default
