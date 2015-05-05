@@ -30,7 +30,7 @@ case node['platform']
       after 'container-test.service'
       requires 'container-test.service'
       execstartpre <<-EOF
-        -/usr/bin/docker rm -f dependency
+        /usr/bin/docker rm -f dependency || true
       EOF
       execstart <<-EOF
         /usr/bin/docker run --name dependency --rm \
@@ -68,7 +68,7 @@ case node['platform']
         /usr/bin/docker kill test
       EOF
       restart 'always'
-      timeoutstartsec '10'
+      execstoppost "exec sleep 5"
     end
 
     systemd_upstart 'container-dependency.conf' do
@@ -86,8 +86,26 @@ case node['platform']
         /usr/bin/docker kill dependency || true
       EOF
       restart 'always'
-      timeoutstartsec '10'
+      execstoppost "exec sleep 5"
     end
 
+    systemd_upstart 'logspout.conf' do
+      starton "started docker"
+      stopon "stopped docker"
+      execstartpre <<-EOF
+        /usr/bin/docker rm -f logspout || true
+      EOF
+      execstart <<-EOF
+        /usr/bin/docker run --name logspout --rm \
+          --volume=/var/run/docker.sock:/tmp/docker.sock \
+          --publish=8000:8000 \
+          gliderlabs/logspout
+      EOF
+      execstop  <<-EOF
+        /usr/bin/docker kill logspout || true
+      EOF
+      execstoppost "exec sleep 5"
+      restart 'always'
+    end
 end
 
