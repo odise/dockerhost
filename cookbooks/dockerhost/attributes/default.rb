@@ -18,7 +18,7 @@ default['docker']['package']['name'] = value_for_platform(
   'default' => nil
 )
 
-default['docker']['group_members'] = ['vagrant']
+default['docker']['group_members'] = ['ubuntu']
 default['docker']['group'] = value_for_platform(
   %w(centos redhat) => {
     'default' => 'dockerroot'
