@@ -54,7 +54,7 @@ case node['platform']
   when 'debian', 'ubuntu'
 
     systemd_upstart 'container-test.conf' do
-      starton "starting docker"
+      starton "started docker"
       stopon "stopping docker"
       execstartpre <<-EOF
         /usr/bin/docker rm -f test || true
@@ -73,7 +73,7 @@ case node['platform']
 
     systemd_upstart 'container-dependency.conf' do
       starton "started container-test "
-      stopon "stopped container-test"
+      stopon "stopping container-test"
       execstartpre <<-EOF
         /usr/bin/docker rm -f dependency || true
       EOF
@@ -91,7 +91,7 @@ case node['platform']
 
     systemd_upstart 'logspout.conf' do
       starton "started docker"
-      stopon "stopped docker"
+      stopon "stopping docker"
       execstartpre <<-EOF
         /usr/bin/docker rm -f logspout || true
       EOF
