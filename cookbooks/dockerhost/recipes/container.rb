@@ -8,8 +8,8 @@ case node['platform']
     end
 
     systemd_unit 'container-test.service' do
-      after 'docker'
-      requires 'docker'
+      after 'docker.service'
+      requires 'docker.service'
       execstartpre <<-EOF
         -/usr/bin/docker rm -f test
       EOF
@@ -27,8 +27,8 @@ case node['platform']
     end
 
     systemd_unit 'container-dependency.service' do
-      after 'container-test'
-      requires 'container-test'
+      after 'container-test.service'
+      requires 'container-test.service'
       execstartpre <<-EOF
         -/usr/bin/docker rm -f dependency
       EOF
@@ -43,6 +43,11 @@ case node['platform']
       restart 'always'
       timeoutstartsec '0'
       notifies :run, 'execute[systemctl-daemon-reload]', :delayed
+    end
+
+    execute 'systemctl start container' do
+      command '/bin/systemctl start container-dependency'
+      action :run
     end
 
   # UBUNTU 14.04

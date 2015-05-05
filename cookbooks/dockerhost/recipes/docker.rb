@@ -3,6 +3,14 @@ case node['platform']
   when 'amazon', 'centos', 'fedora', 'redhat'
     package node['docker']['package']['name']
 
+    execute "enable and start docker" do
+      command "systemctl enable docker && systemctl start docker"
+    end
+
+    execute "change group for docker.sock" do
+      command "chgrp #{node['docker']['group']} /var/run/docker.sock"
+    end
+
   when 'debian', 'ubuntu'
     package ['wget', 'inotify-tools']
     execute 'get docker.io' do
