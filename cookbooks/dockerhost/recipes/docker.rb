@@ -12,7 +12,7 @@ case node['platform']
     end
 
   when 'debian', 'ubuntu'
-    package ['wget', 'inotify-tools']
+    package 'wget'
     execute 'get docker.io' do
       command "wget -qO- https://get.docker.com/ | sh"
       not_if { ::File.exists?("/usr/bin/docker")}
