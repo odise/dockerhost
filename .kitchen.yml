@@ -37,4 +37,5 @@ suites:
   - name: default
     run_list:
       - recipe[dockerhost]
-    attributes:
+    attributes: { docker: { group_members: 'vagrant' } }
+

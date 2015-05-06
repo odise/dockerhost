@@ -8,6 +8,7 @@ version '0.1.0'
 depends 'docker'
 depends 'sudo'
 depends 'systemd'
+depends 'container'
 
 #%w(debian ubuntu).each do |os|
 #  depends os

@@ -1,4 +1,3 @@
-
 case node['platform']
   when 'amazon', 'centos', 'fedora', 'redhat'
     package node['docker']['package']['name']
@@ -12,7 +11,7 @@ case node['platform']
     end
 
   when 'debian', 'ubuntu'
-    package 'wget'
+    package [ 'wget', 'tmux', 'nmap' ]
     execute 'get docker.io' do
       command "wget -qO- https://get.docker.com/ | sh"
       not_if { ::File.exists?("/usr/bin/docker")}

@@ -1,7 +1,8 @@
 source "https://supermarket.getchef.com"
 
 cookbook 'docker'
-cookbook "systemd", github: "odise/systemd-cookbook"
+#cookbook "systemd", github: "odise/systemd-cookbook"
+#cookbook "container", github: "odise/container-cookbook"
 cookbook "sudo"
 
 Dir.glob('./cookbooks/*').each do |path|
