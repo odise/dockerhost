@@ -36,9 +36,18 @@ if ( deploy? 'add_example_app' )
     image "gliderlabs/logspout"
   end
 
+  # first stop all running containers
   %w{container-dependency container-test logspout}.each do |unit|
     container_unit unit do
-      action :restart
+      action :stop
+    end
+  end
+
+  # now start only those which do not have a dependency - the other 
+  # should follow automatically
+  %w{logspout container-test}.each do |unit|
+    container_unit unit do
+      action :start
     end
   end
 
