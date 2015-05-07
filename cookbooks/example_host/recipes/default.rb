@@ -10,7 +10,7 @@
 Chef::Log.info("DEPLOY: #{node['deploy']}, OPSWORKS: #{node['opsworks']}")
 
 # only deploy when short name of the application is set
-if ( deploy? 'test_app' )
+if ( deploy? 'add_example_app' )
 
   container_unit 'container-test' do
     depend "docker"
@@ -36,16 +36,22 @@ if ( deploy? 'test_app' )
     image "gliderlabs/logspout"
   end
 
-  container_unit 'container-test' do
-    action :restart
+  %w{container-dependency container-test logspout}.each do |unit|
+    container_unit unit do
+      action :restart
+    end
   end
 
-  container_unit 'container-dependency' do
-    action :restart
-  end
+end
 
-  container_unit 'logspout' do
-    action :restart
-  end
+if ( deploy? 'remove_example_app' )
 
+  %w{container-dependency container-test logspout}.each do |unit|
+    container_unit unit do
+      action :stop
+    end
+    container_unit unit do
+      action :remove
+    end
+  end
 end
