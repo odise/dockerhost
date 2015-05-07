@@ -9,7 +9,8 @@
 
 Chef::Log.info("DEPLOY: #{node['deploy']}, OPSWORKS: #{node['opsworks']}")
 
-if ( deploy? 'Test App' )
+# only deploy when short name of the application is set
+if ( deploy? 'test_app' )
 
   container_unit 'container-test' do
     depend "docker"
