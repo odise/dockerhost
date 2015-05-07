@@ -4,6 +4,6 @@ case node['platform']
       include_recipe "systemd::systemd"
     end
 end
-include_recipe "dockerhost::container"
+
 include_recipe "dockerhost::docker"
 
