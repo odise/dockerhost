@@ -18,9 +18,18 @@ default['docker']['package']['name'] = value_for_platform(
   'default' => nil
 )
 
-default['docker']['group_members'] = ['ubuntu']
+default['docker']['group_members'] = value_for_platform(
+  %w(centos redhat amazon) => {
+    'default' => 'ec2-user'
+  },
+  'ubuntu' => {
+    'default' => 'ubuntu'
+  },
+  'default' => nil
+)
+
 default['docker']['group'] = value_for_platform(
-  %w(centos redhat) => {
+  %w(centos redhat amazon) => {
     'default' => 'dockerroot'
   },
   'ubuntu' => {
