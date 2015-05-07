@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+Chef::Log.info("DEPLOY: #{node['deploy']}, OPSWORKS: #{node['opsworks']}")
+
 if ( deploy? 'Test App' )
 
   container_unit 'container-test' do
