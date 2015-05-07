@@ -29,10 +29,10 @@ default['docker']['group_members'] = value_for_platform(
 )
 
 default['docker']['group'] = value_for_platform(
-  %w(centos redhat amazon) => {
+  %w(centos redhat) => {
     'default' => 'dockerroot'
   },
-  'ubuntu' => {
+  %w(ubuntu amazon) => {
     'default' => 'docker'
   },
   'default' => nil
