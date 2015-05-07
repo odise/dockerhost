@@ -23,7 +23,7 @@ if ( deploy? 'add_example_app' )
   end
 
   container_unit 'container-dependency' do
-    depend "docker"
+    depend "docker and container-test"
     image "odise/busybox-curl"
     link "--link container-test:test"
     command "/bin/sh -c 'while true; do echo zzz; sleep 2; done'"
