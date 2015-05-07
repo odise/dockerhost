@@ -2,14 +2,6 @@ case node['platform']
   when 'amazon', 'centos', 'fedora', 'redhat'
     package node['docker']['package']['name']
 
-    execute "enable and start docker" do
-      command "systemctl enable docker && systemctl start docker"
-    end
-
-    execute "change group for docker.sock" do
-      command "chgrp #{node['docker']['group']} /var/run/docker.sock"
-    end
-
   when 'debian', 'ubuntu'
     %w{wget tmux nmap}.each do |pkg|
       package pkg
@@ -25,7 +17,7 @@ else
 end
 
 service node['docker']['package']['name'] do
-  action :start
+  action [:enable, :restart]
 end
 
 docker_group = node['docker']['group'] || 'docker'
