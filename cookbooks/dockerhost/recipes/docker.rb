@@ -11,7 +11,9 @@ case node['platform']
     end
 
   when 'debian', 'ubuntu'
-    package [ 'wget', 'tmux', 'nmap' ]
+    %w{wget tmux nmap}.each do |pkg|
+      package pkg
+    end
     execute 'get docker.io' do
       command "wget -qO- https://get.docker.com/ | sh"
       not_if { ::File.exists?("/usr/bin/docker")}
