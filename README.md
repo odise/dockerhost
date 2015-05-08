@@ -33,10 +33,11 @@ OpsWorks App deployments examples
 ---------------------------------
 In order to integrate the dockerhost-cookbook and a customized container unit file implementation in AWS OpsWorks create a Stack and configure the Layer as follows:
 
-![image](http://)
-![image](http://)
+![image](https://raw.githubusercontent.com/odise/dockerhost/master/pictures/integration_-_amazon_dockerhost_%E2%80%93_AWS_OpsWorks.png)
 
+To deploy different parts of the cookbook create OpsWorks Apps and give it some meaningful names. This can be reused within your cookbook.
 
+![image](https://raw.githubusercontent.com/odise/dockerhost/master/pictures/Add_example_app_-_Apps_-_amazon_dockerhost_%E2%80%93_AWS_OpsWorks.png)
 
 `recipes/default.rb`
 
