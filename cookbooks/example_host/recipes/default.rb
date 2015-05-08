@@ -13,7 +13,7 @@ Chef::Log.info("DEPLOY: #{node['deploy']}, OPSWORKS: #{node['opsworks']}")
 if ( deploy? 'add_example_app' )
 
   container_unit 'container-test' do
-    depend "docker"
+    depend ["docker"]
     image "odise/busybox-curl"
     command "/bin/sh -c 'while true; do echo ${VAR1} and ${VAR2}; sleep 2; done'"
     environment [
@@ -23,31 +23,31 @@ if ( deploy? 'add_example_app' )
   end
 
   container_unit 'container-dependency' do
-    depend "docker and container-test"
+    depend ["docker", "container-test"]
     image "odise/busybox-curl"
     link "--link container-test:test"
     command "/bin/sh -c 'while true; do echo zzz; sleep 2; done'"
   end
 
   container_unit 'logspout' do
-    depend "docker"
+    depend ["docker"]
     volumes "-v /var/run/docker.sock:/tmp/docker.sock"
-    ports "--publish=8000:8000"
+    ports "--publish=80:8000"
     image "gliderlabs/logspout"
   end
 
   # first stop all running containers
-  %w{container-dependency container-test logspout}.each do |unit|
-    container_unit unit do
-      action :stop
-    end
-  end
+  #%w{container-dependency container-test logspout}.each do |unit|
+  #  container_unit unit do
+  #    action :stop
+  #  end
+  #end
 
   # now start only those which do not have a dependency - the other 
   # should follow automatically
-  %w{logspout container-test}.each do |unit|
+  %w{logspout container-test container-dependency}.each do |unit|
     container_unit unit do
-      action :start
+      action :restart
     end
   end
 

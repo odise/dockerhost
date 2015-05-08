@@ -16,8 +16,9 @@ else
 
 end
 
+# XXX: make docker daemon restart in systemd unit script for centos
 service node['docker']['package']['name'] do
-  action [:enable, :restart]
+  action [:enable, :start]
 end
 
 docker_group = node['docker']['group'] || 'docker'
